@@ -1,0 +1,71 @@
+<view class="container">
+<!--支付结果  -->
+    <view class='bgColor'>
+       <view class='result'>
+          <icon type="success" size="22" />
+          <text>支付成功</text>
+       </view>
+       <view class='link'>
+           <view class='toIndex color-fd4a8b' bindtap='toIndexClick'>返回首页</view>
+           <view class='color-fd4a8b' bindtap='toOrderClick'>我的订单</view>
+       </view>
+    </view>
+
+<!--劵码  -->
+    <view class='securities'>
+        <view class='j-title'>
+            <text class='verify-name'>{{ detail.order.goods_name }}</text>
+            <view class='j-mount'>{{ detail.verify.length }}张</view>
+        </view>
+        <view class='j-content bgColor'>
+            <view class='coupon-code'>
+              <block wx:for='{{ verify }}'>
+                <view>劵码0{{ index + 1 }}<text class='numbering color-fd4a8b'>{{ item.verify }}</text></view>
+              </block>
+            </view>
+            <view class='tips color-999' wx:if='{{ detail.order.sms == 1 }}'>
+                 已使用短信通知，也可以在"我的订单-待使用"中查看
+            </view>
+        </view>
+    </view>
+
+<!--本店其它体验  -->
+    <view class='else'>
+        <view class='else-title bgColor'>
+           <image src='../../../image/f.png'></image>
+           <text>本店其它体验</text>
+        </view>
+        <!--体验列表  -->
+        <view class='else-list bgColor bottom20' wx:for='{{ goods }}'>
+           <view class='pro-image'>
+               <image src='{{ item.pic }}'></image>
+           </view>
+           <view class='instruction'>
+              <view class='pro-name line2-overflow'>
+                  {{ item.goods_name }}
+              </view>
+              <view class='price-buy'>
+                  <view class='pro-price'>
+                     <image src='../../../image/qiang.png'></image>
+                     <text class='price-now'>¥{{ item.price }}</text>
+                     <text class='price-original'>¥{{ item.marketprice }}</text>
+                  </view>
+                  <view class='pro-buy'>
+                    <button bindtap='buyClick'>购买</button>
+                  </view>
+              </view>
+              <view class='mount-time normal-flex'>
+                 <view class='surplus'>剩余<text>{{ item.storage }}</text></view>
+                 <view class='countdown normal-flex'>
+                    <image src='../../../image/hot.png'></image> 
+                 </view>
+              </view>
+           </view>
+        </view>       
+
+    </view>
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../../image/kefu1.png'></image>
+</button>

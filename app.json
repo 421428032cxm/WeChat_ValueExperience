@@ -1,0 +1,41 @@
+{
+  "pages":[ 
+    "pages/index/index",
+    "pages/detailPage/detailPage",
+    "pages/orderList/orderList",
+    "pages/payResult/success/success",
+    "pages/payResult/goToPay/goToPay",
+    "pages/refund/applyRefund/applyRefund",
+    "pages/order/waitForPay/waitForPay",
+    "pages/order/payment/payment",           
+    "pages/logs/logs",
+    "pages/refund/refundDetail/refundDetail",
+    "pages/order/checkVolume/checkVolume"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "孕妈网超值体验",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#000",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#fd4a8b",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/h_tehui.png",
+        "selectedIconPath": "image/tehui.png",
+        "text": "特惠首页"
+      },
+      {
+        "pagePath": "pages/orderList/orderList",
+        "iconPath": "image/dingdan.png",
+        "selectedIconPath": "image/f_dingdan.png",
+        "text": "我的订单"
+      }
+    ]
+  }
+}

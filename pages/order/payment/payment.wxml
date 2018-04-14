@@ -1,0 +1,94 @@
+<import src="../../../wxParse/wxParse.wxml"/> 
+
+<view class='container'>
+<!--付款倒计时  -->
+    <view class='header-bg border-bottom-bg'>
+        <text>等待买家付款</text>
+        <view class='pay-time'>{{ clock }}</view>
+    </view>
+
+<!--商品详情  -->
+<form bindsubmit="formSubmit">
+    <view class='list'>
+       <view class='intro'>
+          <view>
+              <image src='../../../image/f.png'></image>{{ data.shop.name }}
+          </view>
+       </view>
+       <view class='details border-bottom-bg'>
+            <view class='picture'>
+              <image src='{{ data.good.pic }}'></image>
+            </view>
+            <view class='info'>
+                <view class='line line-txt'>
+                    <view class='line1-overflow'>{{ data.good.goods_name }}</view>
+                    <text class='color-fd4a8b'>¥{{ data.good.price }}</text>
+                </view>
+                <view class='line line-txt'>
+                    <view class='color-999'  wx:if="{{ data.good.appointment == 1 }}">周一至周日 | 需提前预约</view>
+                    <text class='mount'>数量：{{ data.order.goods_count }}</text>
+                </view>
+                <view class='line' wx:if="{{ data.good.type == 2 }}">
+                    <view class='icon'>
+                        <icon type="success" size="17" color='#fdab4a'/>超值优惠
+                    </view>
+                <view> 
+            </view> 
+          </view>
+        </view> 
+      </view>
+    </view>
+
+<!--信息核对  -->
+    <view class='check-infor border-bottom-bg'>
+        <form bindsubmit="formSubmit" bindreset="formReset">
+           <view class='info-list normal-flex'>
+               <text class='msg'>买家留言</text>
+               <input name="message" placeholder="点击给商家留言" class='msg-input'/>
+           </view>
+           <view class='info-list space-between'>
+               <text>发送短信核验码</text>
+               <switch name="sms" checked='true' color="#fd4a8b"/>
+           </view> 
+           <view class='info-list attribute'>
+              <view class='space-between'>
+                  <text>商品金额</text>
+                  <text class='color-666'>¥{{ data.good.price * data.order.goods_count }}</text>
+              </view>
+             <view class='space-between'>
+                  <text>运费</text>
+                  <text class='color-666'>虚拟物品，无需运费</text>
+              </view>
+           </view> 
+           <view class='info-list normal-flex'>
+               <text>预留信息</text>
+               <view class='reserved color-666'>姓名：<text>{{ data.order.user_name }}</text>电话：<text>{{ data.order.tel }}</text></view>
+           </view>
+        </form>
+    </view>
+
+    <!--温馨提醒  -->
+    <view class='reminding'>
+        <view class='info-list normal-flex'>
+            <text class='msg'>温馨提醒：</text>
+        </view>
+        <view class='remind-content color-666'>
+            <template is="wxParse" data="{{wxParseData: desc_alert.nodes}}"/>
+        </view>
+    </view>
+
+<!--立即支付  -->
+    <view class='pay-now space-between'>
+       <view class='tot-up'>
+          <text>合计：</text><text class='color-fd4a8b'>¥{{ data.good.price * data.order.goods_count }}</text>
+       </view>
+       <view class='pay'>
+          <button formType="submit">立即支付</button>
+       </view>
+    </view>
+   </form> 
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../../image/kefu1.png'></image>
+</button>

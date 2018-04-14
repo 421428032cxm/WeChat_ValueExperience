@@ -1,0 +1,41 @@
+<view class='container'>
+     <view class='apply-list'>
+        <view>订单号：<text>{{ detail.order_sn }}</text></view>
+     </view>
+     <view class='refund-data'>
+        <view>退还金额：<text class='price-now'>¥{{ detail.amount }}</text></view>
+        <view>退还方式：<text>原路返回</text></view>
+     </view>
+     <view class='apply-list choose-reason'>
+        <text>退款原因</text>
+        <text>(至少选一项）</text>
+     </view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <checkbox-group name="checkbox">
+     <view class='apply-list reason'>
+       <text>电话预约不上</text>
+       <checkbox value="电话预约不上" color="#fd4a8b"/>
+     </view>
+     <view class='apply-list reason'>
+       <text>商家休息未营业</text>
+       <checkbox value="商家休息未营业" color="#fd4a8b"/>
+     </view>
+     <view class='apply-list reason'>
+       <text>店里活动更优惠</text>
+       <checkbox value="店里活动更优惠" color="#fd4a8b"/>
+     </view>
+     <view class='apply-list reason'>
+       <text>后悔了不想要了</text>
+       <checkbox value="后悔了不想要了" color="#fd4a8b"/>
+     </view>
+  </checkbox-group>
+
+  <view class='apply-btn'>
+     <button formType="submit">申请退款</button>
+  </view>
+</form>
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../../image/kefu1.png'></image>
+</button>

@@ -1,0 +1,171 @@
+<!--顶部搜索-->
+<loading hidden = "{{hide}}">加载中...</loading>
+<view class='header'>
+     <view class='search'>
+        <input placeholder="游泳，早教"/>
+        <image src='../../image/search.png'></image>
+     </view>
+      <view class='user'>    
+         <image wx:if='{{ nullHide }}' class="userinfo-avatar" src='../../image/headicon.png' bindtap='loginAgain'></image> 
+         <image wx:else class="userinfo-avatar" src="{{userInfo.avatarUrl}}" bindtap='checkStatic'></image>
+     </view> 
+</view>
+ <!--导航  -->
+<!-- <view class="container">
+   <view class='navList'>
+          <view class='navPic'><image src='../../image/icon1.png'></image> </view>
+          <view class='navTit'>
+              全部
+          </view>
+    </view>
+    <view class='navList' wx:for="{{ classify }}">
+          <view class='navPic'><image src='../../image/icon{{index+2}}.png'></image> </view>
+          <view class='navTit'>
+              {{ item.gc_name }}
+          </view>
+    </view>
+</view> -->
+
+<!--活动展示  -->
+<view class='activity'>
+ <navigator url="../detailPage/detailPage?id={{top.id}}">
+    <view class='activeImg'>
+        <image src='{{top.pic}}' data-id='{{ top.id }}'></image>
+    </view>
+    <view class='time'>
+        <view class='lastTime'>
+           <image src='../../image/clock.png'></image>
+           <text>{{ clock }}</text>
+        </view>
+        <view>
+           <text>剩余：{{ top.storage }}</text>
+        </view>
+    </view>
+    <view class='active-title'>
+        <image src='../../image/tejia.png'></image>
+        <text>{{ top.goods_name }}</text>
+    </view>
+    <view class='price-buy'>
+         <view class='active-price'>
+             <text class='price-now'>¥{{ top.price }}</text>
+             <text class='price-original'>¥{{ top.marketprice }}</text>
+         </view>
+         <view class='buy-now'>
+             <button> 立即抢购 </button>
+         </view>
+    </view>
+   </navigator> 
+</view>
+
+<!--热门推荐  -->
+<view class='section'>
+    <view class='block-head'>
+       <image src='../../image/remen.png'></image>
+    </view>
+    <view class='sec-display'>
+        <view class='sec-list' wx:for="{{ recommend }}">
+           <navigator url="../detailPage/detailPage?id={{item.id}}">
+              <image src='{{ item.pic }}'></image> 
+              <view class='details hot-dtls'>
+                  <view class='sec-des hot-des'>
+                     <image src='../../image/hot.png'></image>
+                     {{ item.slug }}
+                  </view>
+                  <view class='hot-buy'>
+                      <view class='hot-price'>
+                          ¥{{ item.price }}
+                      </view>
+                      <view class='hot-pay'>
+                          <button> 购买 </button>
+                      </view>
+                  </view>
+              </view>
+          </navigator>
+       </view>
+    </view>
+</view>
+
+<!--超值体验  -->
+<view class='section'>
+    <view class='block-head'>
+       <image src='../../image/tiyan.png'></image>
+    </view>
+    <view class='sec-display'>
+       <view class='sec-list hot-list' wx:for="{{ more }}">
+           <navigator url="../detailPage/detailPage?id={{item.id}}">
+               <image src='{{ item.pic }}'></image> 
+               <view class='details ty-dtls'>
+                  <view class='sec-des ty-des'>
+                       {{ item.slug }}
+                  </view>
+                  <view class='experience'>
+                      <view class=''>
+                         <text class='price-now'>¥{{ item.price }}</text>
+                         <text class='price-original'>¥{{ item.marketprice }}</text>
+                      </view>
+                      <view class='allowance'>
+                           剩余<text>{{ item.storage }}</text>
+                      </view>
+                  </view>
+                   <button class='experience-btn'>立即购买</button>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>
+
+<!--底部tab切换  -->
+<view>
+    <!-- <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">全部</view>
+        <block  wx:for="{{ classify }}">
+           <view class="tab-item {{currentTab==index+1?'active':''}}"  data-current="{{ index+1 }}" bindtap="swichNav">{{ item.gc_name }}</view>
+        </block>
+    </scroll-view> -->
+    <!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item>
+         <scroll-view scroll-y="true" class="scoll-h" > -->
+<block wx:for="{{ goods }}" wx:key="*this">
+        <!--体验列表  -->
+      <navigator url="../detailPage/detailPage?id={{item.id}}">
+        <view class='else-list bgColor bottom20'>
+           <view class='pro-image'>
+               <image src='{{ item.pic }}'></image>
+           </view>
+           <view class='instruction'>
+              <view class='pro-name line2-overflow'>
+                  {{item.goods_name }}
+              </view>
+              <view class='priceBuy'>
+                  <view class='pro-price'>
+                     <image src='../../image/qiang.png'></image>
+                     <text class='price-now'>¥{{ item.price }}</text>
+                     <text class='price-original'>¥{{ item.marketprice }}</text>
+                  </view>
+                  <view class='pro-buy'>
+                    <button>购买</button>
+                  </view>
+              </view>
+              <view class='mount-time normal-flex'>
+                 <view class='surplus'>剩余<text>{{ item.storage }}</text></view>
+                 <view class='countdown normal-flex'>
+                    <image src='../../image/hot.png'></image> 
+                    <view>
+                  
+                    </view>
+                 </view>
+              </view>
+           </view>
+        </view>       
+        </navigator>
+</block>
+    <!-- </scroll-view>
+        </swiper-item>
+    </swiper> -->
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../image/kefu1.png'></image>
+</button>
+

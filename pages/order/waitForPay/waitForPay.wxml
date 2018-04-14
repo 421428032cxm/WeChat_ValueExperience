@@ -1,0 +1,137 @@
+<import src="../../../wxParse/wxParse.wxml"/> 
+
+<view class='container'>
+<!--头部  -->
+  <view class='product-info bgColor'>
+   <view class='intro'>
+      <image src='../../../image/f.png'></image><text>{{ detail.shop.name }}</text>
+   </view>
+   <view class='head'>
+      <view class='pro-img'>
+         <image src='{{ detail.order.goods_pic  }}'></image>
+      </view>
+
+      <view class='pro-detail'>
+         <view class='line1-overflow'>{{ detail.good.goods_name }}</view>
+         <view class='price'>
+             <text class='price-now'>¥{{ detail.good.price }}</text>
+             <text class='price-original'>¥{{ detail.good.marketprice }}</text>
+         </view>
+         <view class='icon' wx:if='{{ detail.good.type == 2 }}'>
+            <icon type="success" size="17" color='#fdab4a'/><text>超值优惠</text>
+         </view>
+         <view wx:else></view>
+      </view>
+
+      <view class='right'>
+         <image src='../../../image/right.png'></image>
+      </view>
+   </view>
+  </view>
+
+<!--待付款状态  -->
+   <view class='sub-btn' wx:if='{{ orderStaic == 10 }}'>
+       <button class='pay-btn' bindtap='payNow'>未付款，立即支付</button>
+       <button class='cancel-btn' bindtap='cancelOrder'>取消订单</button>
+   </view>
+
+
+<!--待使用状态  -->
+<view class='info-list space-between bgColor' wx:if='{{ orderStaic == 20 }}'>
+    <block wx:for='{{ detail.verify }}'>
+       <view>劵码：<text class='juanma'>{{ item.verify }}</text></view>
+    </block>
+    <view class='wait-use'>
+        <text class='color-ff0a0a'>待使用</text>
+        <button bindtap='applyForRefund'>申请退款</button>
+    </view>
+</view>
+
+<!--使用中  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 30 }}'>
+   <view class='info-list space-between bgColor'>
+      <view>劵码<text class='juanma'>2751 1480 5560</text></view>
+      <view class='refunding'>
+        使用中
+      </view>
+   </view>
+</view>
+
+<!--已完成  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 40 }}'>
+   <view class='info-list space-between bgColor'>
+      <view>劵码<text class='juanma'>2751 1480 5560</text></view>
+      <view class='refunding'>
+        已完成
+      </view>
+   </view>
+</view>
+
+<!--已取消  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 50 }}'>
+   <view class='info-list space-between bgColor'>
+      <view class='color-666'>
+        订单已取消
+      </view>
+   </view>
+</view>
+
+<!--已过期  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 60 }}'>
+   <view class='info-list space-between bgColor'>
+      <view class='color-666'>
+        订单已过期
+      </view>
+   </view>
+</view>
+
+<!--退款中  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 70 }}'>
+   <view class='info-list space-between bgColor'>
+      <view class='color-666'>
+        退款中
+      </view>
+   </view>
+   <view class='info-list space-between bgColor' bindtap='refundDetail'>
+      <text class='color-fd4a8b'>查看退款详情</text>
+      <view class='right'>
+        <image src='../../../image/right.png'></image>
+      </view>
+   </view>
+</view>
+
+<!--已退款  -->
+<view class='refund bottom20' wx:if='{{ orderStaic == 80 }}'>
+   <view class='info-list space-between bgColor'>
+      <view class='color-666'>
+        已退款
+      </view>
+   </view>
+</view>
+   <!--温馨提醒  -->
+   <view class='reminding bgColor'>
+        <view class='info-list normal-flex'>
+            <text class='msg'>温馨提醒：</text>
+        </view>
+        <view class='remind-content color-666'>
+            <template is="wxParse" data="{{wxParseData: desc_alert.nodes}}"/>
+        </view>
+    </view>
+
+  <!--温馨提醒  -->
+   <view class='reminding bgColor'>
+        <view class='info-list normal-flex'>
+            <text class='msg'>商家信息</text>
+        </view>
+        <view class='remind-content color-666'>
+            <view>店铺名称：{{ detail.shop.name }}</view>
+            <view>联系方式：{{ detail.shop.tel }}</view>
+            <view>营业时间：{{ detail.shop.worktime }}</view>
+            <view>店铺地址：{{ detail.shop.address }}</view>
+        </view>
+    </view>
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../../image/kefu1.png'></image>
+</button>

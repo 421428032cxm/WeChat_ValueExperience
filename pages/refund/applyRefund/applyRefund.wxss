@@ -1,0 +1,39 @@
+page{
+  font-size: 30rpx;
+  background-color: #fff;
+}
+.refund-data{
+  padding: 20rpx 25rpx;
+  line-height: 65rpx;
+  border-bottom: 1px solid #ddd;
+}
+.apply-list{
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0 25rpx;
+}
+.choose-reason{
+  justify-content: flex-start;
+}
+.choose-reason text:nth-child(2){
+  color: #999;
+  font-size: 25rpx;
+  margin-left: 20rpx;
+}
+.reason{
+  padding-left: 55rpx;
+}
+.apply-btn{
+  padding: 25rpx;
+  margin-top: 220rpx;
+}
+.apply-btn button{
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #fd4a8b;
+  color: #fff;
+  font-size: 38rpx;
+}

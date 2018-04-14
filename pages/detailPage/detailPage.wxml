@@ -1,0 +1,134 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<loading hidden = "{{hide}}">加载中...</loading>
+<view class='container'>
+   <!--商品图片轮播图  -->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper-top'>
+        <block wx:for="{{detail.smeta}}">
+           <swiper-item>
+             <image src="{{item}}" class="slide-image" width="355" height="150"/>
+           </swiper-item>
+        </block>
+    </swiper>
+  
+<view class='pro-infor'>
+    <view class='price-all'>
+           <view class='price'>
+               <image src='../../image/qiang.png'></image>
+               <text class='now'>¥{{ detail.price }}</text>
+               <text class='old'>¥{{ detail.marketprice }}</text>
+           </view>
+           <view class='remain'>
+               <view class=''>剩余<text>{{ detail.storage }}</text></view>
+           </view>
+        </view>
+        <view class='title line2-overflow'>
+           <image src='../../image/tejia.png'></image>
+           {{ detail.goods_name }}
+        </view>
+    </view>
+    <view class='djs'>
+         <view class='progress'>
+           <text>限时抢购 机不可失</text>
+           <view class='progress-bar'><progress percent="{{ detail.storage / (detail.sale + detail.storage) * 100 }}" activeColor="#fdaf16" active="true"/></view>
+        </view> 
+        <view class='clock'>
+           <image src='../../image/clock.png'></image> 
+           <view class='miaosha'>
+               {{ clock }} 
+           </view>
+        </view>
+    </view>
+    <view class='date'>
+       到店体验时间：
+       <text>{{ act_start_time }}-{{ act_end_time }}</text>
+    </view>
+    <view class='rule'>
+       使用须知：
+       <view class='xuzhi'>
+          <template is="wxParse" data="{{wxParseData: desc_alert.nodes}}"/>
+       </view>
+    </view>
+
+    <!--选项卡  -->
+   <view class="navbar">  
+       <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+   </view>  
+  
+    <!--店铺详情-->  
+    <view hidden="{{currentTab!==0}}" class='cab shop-detail'>  
+        <!--将image的mode属性设置为widthFix 再给image设置宽时 图片高度就会自动变化，并保持原图宽高比不变。  -->     
+         <template is="wxParse" data="{{wxParseData:mobile_content.nodes}}"/> 
+    </view>  
+
+    <!--家长须知-->  
+    <view hidden="{{currentTab!==1}}" class='cab instructions'>  
+          <template is="wxParse" data="{{wxParseData:alert_content.nodes}}"/>  
+    </view>  
+
+    <!--立即购买  -->
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='buy-now'>
+      <button wx:if='{{ detail.storage == 0 }}' disabled='disabled'>该商品暂时无货</button>
+      <button wx:else bindtap='showModal' formType="{{ formSub }}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='canbuy'>{{ submit }}</button>
+    </view>
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <!--弹出框  -->
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+       <!--商品参数  -->
+        <view class='attr-head'>
+            <view class='attr-image'>
+               <image src='{{detail.pic}}'></image>
+            </view>
+            <view class='attr-attribute'>
+                <text class='attr-name line2-overflow'>{{detail.goods_name}}</text>
+                <text class='attr-price price-now'>¥{{detail.price}}</text>
+            </view>
+            <view class="group" bindtap="hideModal">
+               <icon type="cancel" size="25" color="#999"/>
+            </view>
+        </view>
+
+        <!--门店选择  -->
+        <view class='shop-select' wx:if="{{ detail.shop.length > 1 }}">
+             <text class='mendian'>门店</text>
+             <view class='shop-list'>
+                 <view wx:for="{{ detail.shop }}" data-index="{{ index }}" class="shop-name {{currentShop==index ?'shop-checked' : ''}}" bindtap='checkShopClick'>
+                    <text>{{ item.sku_name }}</text>
+                    <image src='../../image/xuan.png' class='xuan'></image>
+                 </view>
+             </view>
+        </view>
+
+        <!--购买数量  -->
+        <view class='buy-mount space-between'>
+           <view class='number'>
+               购买数量：
+               <view>
+                  <text class='surplus color-666'>剩余{{ detail.storage }}件</text>
+                  <text class='only color-ff0a0a' wx:if="{{ detail.limit != 0 }}">每人限购{{ detail.limit }}件</text>
+               </view>
+           </view>
+           <view class='stepper'> 
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+              <input type="number" name="mount" bindchange="bindManual" value="{{num}}" disabled='disabled'/>  
+              <text class="normal" bindtap="bindPlus">+</text>  
+           </view>  
+        </view>
+
+        <!--用户信息  -->
+        
+           <view class='user-name normal-flex'>
+               <view><text class='color-ff0a0a'>*</text>姓名</view>
+               <input name="name" placeholder="请输入宝宝的姓名" />
+           </view>
+           <view class='user-name normal-flex'>
+               <view><text class='color-ff0a0a'>*</text>电话</view>
+               <input name="phone" placeholder="请输入您的手机号" />
+           </view>
+    </view>
+  </form>  
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../image/kefu1.png'></image>
+</button>

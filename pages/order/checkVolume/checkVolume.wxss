@@ -1,0 +1,123 @@
+.securities{
+  padding: 20rpx 25rpx;
+}
+.j-title{
+  height: 95rpx;
+  background-color: #fd4a8b;
+  line-height: 95rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.verify-name{
+  width: 350rpx;
+  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis;
+}
+.j-mount{
+  width: 80rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 25rpx;
+  background-color: #ff8b0d;
+  margin-left: 20rpx;
+}
+.j-content{
+  padding: 30rpx 30rpx 0;
+  border-radius: 0 0 10rpx 10rpx;
+}
+.coupon-code{
+  padding-bottom: 30rpx;
+}
+.coupon-code view{
+  line-height: 60rpx;
+  font-size: 25rpx;
+}
+.numbering{
+  margin-left: 20rpx;
+  font-size: 35rpx;
+  font-weight: bold
+}
+.tips{
+  line-height: 80rpx;
+  font-size: 25rpx;
+  border-top: 1px solid #ddd;
+}
+.else-title{
+  height: 100rpx;
+  padding: 0 25rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.else-title image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+.else-list{
+  padding: 25rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.pro-image{
+   width: 220rpx;
+   height: 220rpx;
+}
+.pro-image image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.instruction{
+  width: 445rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.price-buy{
+  display: flex;
+  justify-content: space-between;
+}
+.pro-price{
+  display: flex;
+  align-items: center;
+}
+.pro-price image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.pro-buy button{
+  width: 110rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  background-color: #fd4a8b;
+  color: #fff;
+  border-radius: 55rpx;
+  font-size: 30rpx;
+}
+.mount-time{
+  font-size: 25rpx;
+}
+.surplus{
+  padding-right: 15rpx;
+  border-right: 1px solid #ddd;
+}
+.countdown{
+  padding-left: 15rpx;
+}
+.countdown image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx
+}
+.countdown text{
+  color: #ff0a0a;
+  margin: 0 5rpx;
+}
+

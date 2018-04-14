@@ -1,0 +1,19 @@
+<view class='container'>
+    <view class='system-tip'>
+        <view>您正在使用微信支付订单</view>
+        <view>请在5分钟内完成支付</view>
+        <view>订单超时将自动关闭</view>
+    </view>
+
+    <view class='details'>
+       <text class='color-666'>费用详情</text>
+       <view class='order-count'>
+          <text>订单总计</text>
+          <text class='color-fd4a8b'>¥{{ totalCount }}</text>
+       </view>
+    </view>
+
+    <view class='pay'>
+       <button bindtap='goToPayClick'>继续支付</button>
+    </view>
+</view>

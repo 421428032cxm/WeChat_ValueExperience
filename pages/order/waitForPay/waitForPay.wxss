@@ -1,0 +1,110 @@
+page{
+   background-color: #f5f5f5;
+   font-size: 30rpx;
+}
+.intro{
+  padding: 25rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.intro image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx
+}
+.head{
+  padding: 25rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.pro-img{
+  width: 150rpx;
+  height: 150rpx;
+}
+.pro-img image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pro-detail{
+  width: 450rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.icon{
+  color:#fdab4a;
+  font-size: 25rpx;
+  text-align: left;
+  display: flex;
+  align-items: center
+}
+.icon icon{
+  margin-right: 10rpx;
+}
+.right{
+  display: flex;
+  align-items: center
+}
+.right image{
+  width: 40rpx;
+  height: 40rpx
+}
+.sub-btn{
+  padding: 25rpx;
+}
+.sub-btn button{
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.pay-btn{
+  background-color: #fd4a8b;
+  margin-bottom: 25rpx;
+  color: #fff;
+}
+.cancel-btn{
+  background-color: #e5e5e5;
+}
+.info-list{
+  height: 100rpx;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #ddd;
+}
+.reminding{
+  margin-bottom: 20rpx;
+}
+.remind-content{
+  padding: 20rpx 30rpx;
+  line-height: 50rpx;
+  font-size: 28rpx
+}
+.refunding{
+  color: #fdab4a;
+  display: flex;
+  align-items: center
+}
+.info-list{
+  height: 100rpx;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #ddd;
+}
+.wait-use{
+  display: flex;
+  align-items: center
+}
+.wait-use button{
+  width: 130rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 25rpx;
+  background-color: #fd4a8b;
+  color: #fff;
+  padding: 0;
+  margin-left: 20rpx;
+}
+.refund{
+  margin-top: 20rpx;
+}

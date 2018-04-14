@@ -1,0 +1,291 @@
+.container{
+  font-size: 30rpx;
+  background-color: #fff;
+}
+swiper{
+  height: 460rpx;
+}
+.swiper-top swiper-item image{
+  width: 100%;
+  height: 100%;
+}
+.pro-infor{
+  padding: 20rpx;
+}
+.price-all{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price{
+  display: flex;
+  align-items: center
+}
+.price image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+
+}
+.now{
+  font-size: 35rpx;
+  margin-right: 10rpx;
+  color: #fd4a8b;
+}
+.old{
+  font-size: 28rpx;
+  text-decoration: line-through;
+  color: #666666;
+}
+.remain{
+  display: flex;
+  color: #666666;
+  font-size: 28rpx;
+}
+.title{
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  line-height: 34rpx;
+  letter-spacing: 1rpx;
+}
+.title image{
+   width: 45rpx;
+   height: 28rpx;
+   display: inline-block;
+}
+.djs{
+  color: #fff;
+  padding: 25rpx 40rpx;
+  height: 50rpx;
+  background-image: url("http://www.moepan.net/uploads/2017121110583090894170.png");
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27rpx;
+}
+.progress-bar{
+  margin-top: 10rpx
+}
+.progress-bar progress{
+    border-radius: 6px;
+}
+.clock{
+  display: flex;
+  align-items: center; 
+  font-size: 30rpx;
+}
+.clock image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx
+}
+.miaosha{
+  font-size: 25rpx;
+}
+.date{
+  padding: 25rpx 20rpx;
+  border-bottom: 1px solid #ddd;
+  font-size: 28rpx;
+}
+.rule{
+  text-align: justify;
+  padding: 25rpx 20rpx;
+  border-bottom: 20rpx solid #f5f5f5;
+}
+.xuzhi{
+  color: #666666;
+  margin-top: 10rpx;
+  line-height: 50rpx;
+}
+.navbar{  
+  display: flex;  
+}  
+.navbar .item{  
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  line-height: 90rpx;  
+  border-bottom:1px solid #ddd; 
+}  
+.navbar .item.active{  
+  color: #fd4a8b;  
+  border-bottom: 5rpx solid #fd4a8b;
+}  
+.cab{
+  margin-bottom: 95rpx;
+  padding: 20rpx;
+  color: #666;
+  line-height: 50rpx;
+  font-size: 27rpx;
+  text-align: justify
+}
+.cab image{
+  width: 100%;
+  display: block
+}
+.instructions{
+  padding: 20rpx 30rpx;
+  font-size: 25rpx;
+  line-height: 60rpx;
+  text-align: justify;
+}
+.buy-now button{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 3000;
+  line-height: 100rpx;
+  border-radius: 0;
+  font-size: 35rpx;
+}
+.canbuy{
+  background: -webkit-linear-gradient(left, #fd4b8c, #fd53bb);
+  color: #fff;
+}
+/*使屏幕变暗  */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.6;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+/*对话框 */
+.commodity_attr_box {
+  height: 850rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 95rpx;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+.attr-head{
+  border-bottom:1px solid #ddd;
+  padding: 30rpx 15rpx;
+  display: flex;
+  justify-content: space-around;
+  position: relative
+}
+.attr-image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 15rpx;
+}
+.attr-image image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.attr-attribute{
+  width: 510rpx;
+  line-height: 45rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+.shop-select{
+  padding: 15rpx 20rpx; 
+  border-bottom:1px solid #ddd;
+}
+.mendian{
+  line-height: 60rpx;
+}
+.shop-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.shop-name{
+  position: relative;
+  width: 28%;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border: 1px solid #8f8f8f;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+   margin: 1.5%; 
+}
+.xuan{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 35rpx;
+  height: 35rpx;
+  display: none
+}
+.shop-checked{
+  border-color: #fd4a8b;
+  background-color: #ffe5ee;
+  color:#fd4a8b;
+}
+.shop-checked .xuan{
+  display: block;
+}
+.buy-mount{
+  padding: 25rpx 20rpx; 
+  border-bottom:1px solid #ddd;
+}
+.number{
+  line-height: 50rpx;
+}
+.number text{
+  font-size: 26rpx;
+  margin-right: 20rpx;
+}
+.user-name{
+  padding: 0 25rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom:1px solid #ddd;
+}
+.user-name view{
+   width: 15%;
+}
+.user-name input{
+  width: 85%;
+  height: 100%;
+}
+.stepper {  
+  height: 70rpx;  
+  /*给主容器设一个边框*/  
+  border: 1px solid #ccc;  
+}  
+/*加号和减号*/  
+.stepper text {  
+    width: 70rpx;  
+    line-height: 35px;  
+    text-align: center;  
+    float: left;  
+    background-color: #f8f8f8
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 75rpx;  
+    height: 70rpx;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 30rpx;  
+    border-left: 1px solid #ccc;  
+    border-right: 1px solid #ccc;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+}  

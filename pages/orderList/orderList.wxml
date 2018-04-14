@@ -1,0 +1,198 @@
+<loading hidden = "{{hide}}">加载中...</loading>
+<view class="swiper-tab">
+   <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>
+   <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待付款</view>
+   <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">待使用</view>
+   <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">退款/售后</view>
+</view>
+
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}}rpx" bindchange="bindChange">
+    <swiper-item>
+       <!--list列表  -->
+       <scroll-view scroll-y="true" style="height:100%" bindscrolltolower='pullUpLoad' bindscrolltoupper="topLoad">
+           <view hidden='{{ all != [] }}' class='null'>
+               <image src='../../image/null.png'></image>
+               <text>这里空空如也，什么也没有</text>
+           </view>
+           <view class='list' wx:for='{{ all }}'>
+              <navigator url='../order/waitForPay/waitForPay?id={{ item.id }}'>
+                 <view class='intro'>
+                     <view>
+                        <image src='../../image/f.png'></image>{{ item.sname }}
+                     </view>
+                     <text style='color: {{ item.pay_sn }}'>{{ item.payment }}</text>    
+                 </view>
+              
+              <view class='details'>
+                  <view class='picture'>
+                     <image src='{{ item.pic }}'></image>
+                  </view>
+                  <view class='info'>
+                      <view class='line line-txt'>
+                         <view>{{ item.goods_name }}</view>
+                         <text class='price'>¥{{ item.goods_price }}</text>
+                      </view>
+                      <view class='line line-txt' style='line-height: 58rpx'>
+                        <view wx:if='{{ item.appointment == 1 }}'>周一至周日 | 需提前预约</view>
+                        <view wx:else></view>
+                        <text class='mount'>数量：{{ item.goods_count }}</text>
+                      </view>
+                      <view class='line'>
+                         <view class='icon' wx:if='{{ item.type == 2 }}'>
+                            <icon type="success" size="17" color='#fdab4a'/>超值优惠
+                         </view>
+                         <view wx:else></view>
+                          <view class='pay-btn'  hidden='{{ item.common_time == null }}' > 
+                            <button class='btn1' data-id='{{ item.id }}' data-state='{{ item.state }}' data-out_trade_no='{{ item.order_sn }}' data-count='{{ item.amount }}' bindtap='detailClick'>{{ item.common_time }}</button>
+                          </view> 
+                      </view>
+                  </view> 
+              </view>
+            </navigator>
+          </view>
+       </scroll-view>
+    </swiper-item>
+
+    <!--待付款  -->
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height:100%">
+        <view hidden='{{ all != "" }}' class='null'>
+            <image src='../../image/null.png'></image>
+            <text>这里空空如也，什么也没有</text>
+        </view>
+        <view class='list' wx:for="{{ all }}">
+            <navigator url='../order/waitForPay/waitForPay?id={{ item.id }}'>
+               <view class='intro'>
+                  <view>
+                    <image src='../../image/f.png'></image>{{ item.sname }}
+                  </view>
+                 <text class='wait-pay'>待付款</text>
+               </view>
+      
+              <view class='details'>
+                  <view class='picture'>
+                     <image src='{{ item.pic }}'></image>
+                  </view>
+                   <view class='info'>
+                      <view class='line line-txt'>
+                         <view>{{ item.goods_name }}</view>
+                         <text class='price'>¥{{ item.pay_price }}</text>
+                      </view>
+                      <view class='line line-txt'>
+                        <view wx:if='{{ item.appointment == 1 }}'>周一至周日 | 需提前预约</view>
+                        <view wx:else></view>
+                        <text class='mount'>数量：{{ item.goods_count }}</text>
+                      </view>
+                      <view class='line'>
+                         <view class='icon' wx:if='{{ item.type == 2 }}'>
+                            <icon type="success" size="17" color='#fdab4a'/>超值优惠
+                         </view>
+                         <view wx:else></view>
+                          <view> 
+                            <button class='btn1' data-id='{{ item.id }}' data-state='{{ item.state }}' data-out_trade_no='{{ item.order_sn }}' data-count='{{ item.amount }}' bindtap='detailClick'>付款</button>
+                          </view> 
+                      </view>
+                  </view> 
+              </view>
+            </navigator>
+        </view>
+         </scroll-view>
+    </swiper-item>
+
+    <!--待使用  -->
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height:100%">
+        <view hidden='{{ all != "" }}' class='null'>
+            <image src='../../image/null.png'></image>
+            <text>这里空空如也，什么也没有</text>
+        </view>
+        <view class='list' wx:for="{{ all }}">
+           <navigator url='../order/waitForPay/waitForPay?id={{ item.id }}'>
+              <view class='intro'>
+                  <view>
+                    <image src='../../image/f.png'></image>{{ item.sname }}
+                  </view>
+                 <text class='wait-use'>待使用</text>
+              </view>
+        
+              <view class='details'>
+                  <view class='picture'>
+                     <image src='{{ item.pic }}'></image>
+                  </view>
+                   <view class='info'>
+                      <view class='line line-txt'>
+                         <view>{{ item.goods_name }}</view>
+                         <text class='price'>¥{{ item.pay_price }}</text>
+                      </view>
+                      <view class='line line-txt'>
+                        <view wx:if='{{ item.appointment == 1 }}'>周一至周日 | 需提前预约</view>
+                        <view wx:else></view>
+                        <text class='mount'>数量：{{ item.goods_count }}</text>
+                      </view>
+                      <view class='line'>
+                         <view class='icon' wx:if='{{ item.type == 2 }}'>
+                            <icon type="success" size="17" color='#fdab4a'/>超值优惠
+                         </view>
+                         <view wx:else></view>
+                         <view>
+                            <button class='btn2' data-id='{{ item.id }}' data-state='{{ item.state }}' data-out_trade_no='{{ item.order_sn }}' data-count='{{ item.amount }}' bindtap='detailClick'>查看卷码</button>
+                         </view>
+                      </view>
+                  </view> 
+              </view>
+            </navigator>
+        </view>
+         </scroll-view>
+     </swiper-item>
+
+     <!--退款/售后  -->
+     <swiper-item>
+       <scroll-view scroll-y="true" style="height:100%">
+          <view hidden='{{ all != "" }}' class='null'>
+             <image src='../../image/null.png'></image>
+             <text>这里空空如也，什么也没有</text>
+          </view>
+          <view class='list' wx:for="{{ all }}">
+            <navigator url='../order/waitForPay/waitForPay?id={{ item.id }}'>
+              <view class='intro'>
+                  <view>
+                    <image src='../../image/f.png'></image>{{ item.sname }}
+                  </view>
+                 <text wx:if='{{ item.refund_state == 0 }}' class='refunded'>已退款</text>
+                 <text wx:else class='refunding'>退款中</text>
+              </view>
+      
+              <view class='details'>
+                  <view class='picture'>
+                     <image src='{{ item.pic }}'></image>
+                  </view>
+                  <view class='info'>
+                      <view class='line line-txt'>
+                         <view>{{ item.goods_name }}</view>
+                         <text class='price'>¥{{ item.pay_price }}</text>
+                      </view>
+                      <view class='line line-txt'>
+                        <view wx:if='{{ item.appointment == 1 }}'>周一至周日 | 需提前预约</view>
+                        <view wx:else></view>
+                        <text class='mount'>数量：{{ item.goods_count }}</text>
+                      </view>
+                      <view class='line'>
+                         <view class='icon' wx:if='{{ item.type == 2 }}'>
+                            <icon type="success" size="17" color='#fdab4a'/>超值优惠
+                         </view>
+                         <view wx:else></view>
+                         <view hidden='{{ item.refund_state == 0 }}'>
+                            <button class='btn2'>退款进度</button>
+                         </view>
+                      </view>
+                  </view> 
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
+     </swiper-item>
+</swiper>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../image/kefu1.png'></image>
+</button>

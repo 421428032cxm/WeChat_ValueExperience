@@ -1,0 +1,55 @@
+<view class='container'>
+   <view class='distance'>
+      <view>退还金额：<text class='color-fd4a8b'>¥{{ detail.amount }}元</text></view>
+      <view>退还方式：原路返回</view>
+   </view>
+
+   <view class='mid'>
+       <view class='process'>退款流程</view>
+       <view class='progress-bar'>
+          <view class='line bar1'>
+             <view class='static'>
+                <view class='line-image'>
+                  <image src='../../../image/checked.png' class='checked' wx:if='{{ detail.state == 10 }}'></image>
+                  <image src='../../../image/uncheck.png' class='uncheck' hidden='{{ detail.state == 10 }}'></image>
+                </view>
+                <view>{{ tips[0] }}</view>
+             </view>
+             <view class='instruction success-border'>
+                <text>{{ tipsDes[0] }}</text>
+                <text>{{ detail.add_time }}</text>
+             </view>
+          </view>
+          <view class='line bar1'>
+             <view class='static'>
+               <view class='line-image'>
+                  <image src='../../../image/checked.png' class='checked' wx:if='{{ detail.state == 11 }}'></image>
+                  <image src='../../../image/uncheck.png' class='uncheck' hidden='{{ detail.state == 11 }}'></image>
+                </view>
+                <view>{{ tips[1] }}</view>
+             </view>
+             <view class='instruction fail-border'>
+                <text>{{ tipsDes[1] }}</text>
+                <!-- <text>2017-11-04 09：58：02</text> -->
+             </view>
+          </view>
+         <view class='line bar1'>
+             <view class='static'>
+                <view class='line-image'>
+                  <image src='../../../image/checked.png' class='checked' wx:if='{{ detail.state == 11 }}'></image>
+                  <image src='../../../image/uncheck.png' class='uncheck' hidden='{{ detail.state == 11 }}'></image>
+                </view>
+                <view>{{ tips[2] }}</view>
+             </view>
+             <view class='instruction'>
+                <text>{{ tipsDes[2] }}</text>
+                <text wx:if='{{ detail.state == 11 }}'>{{ detail.refund_time }}</text> 
+             </view>
+          </view>
+       </view>
+   </view>
+</view>
+
+<button open-type="contact" class='kefu'>
+   <image src='../../../image/kefu1.png'></image>
+</button>
